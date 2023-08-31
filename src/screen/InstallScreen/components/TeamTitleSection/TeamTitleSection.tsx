@@ -3,19 +3,10 @@ import * as S from "./TeamTitleSection.styled";
 
 interface TeamTitleSectionProps {
   teamName: string;
+  platform?: string;
 }
 
-export default function TeamTitleSection({ teamName }: TeamTitleSectionProps) {
-  const [platform, setPlatform] = useState("");
-
-  useEffect(() => {
-    const userAgent = window.navigator.userAgent.includes("Mac")
-      ? "Mac"
-      : "Windows";
-
-    setPlatform(userAgent);
-  }, []);
-
+export default function TeamTitleSection({ teamName, platform }: TeamTitleSectionProps) {
   return (
     <S.Container>
       <S.Title>{teamName}</S.Title>

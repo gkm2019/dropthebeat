@@ -1,5 +1,6 @@
-import { StyledToastContainer } from "./Toast.styled";
+
 import { toast } from "react-toastify";
+import { StyledToastContainer } from "./Toast.styled";
 
 export default function Toast() {
   return (

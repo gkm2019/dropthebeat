@@ -9,4 +9,11 @@ const getTeamToolInfo = async (teamId: string) => {
   return data;
 };
 
+export const getTeamList = async () => {
+  const { data }: AxiosResponse<GetTeamToolResponse[]> = await homeDevApi.get(
+    `/v1/team/list`
+  );
+  return data;
+};
+
 export default getTeamToolInfo;

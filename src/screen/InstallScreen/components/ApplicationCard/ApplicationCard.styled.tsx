@@ -8,7 +8,7 @@ import {
   Caption2,
 } from "../../../../styles/typography";
 
-export const Container = styled.button`
+export const Container = styled.button<{ checkInstall: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,8 @@ export const Container = styled.button`
     background-color: ${Colors.white05};
   }
   &:disabled {
-    background-color: ${Colors.black01}98;
+    background-color: ${({ checkInstall }) =>
+      checkInstall ? Colors.jetStreamShade : Colors.black05}98;
     cursor: default;
     box-shadow: none;
   }

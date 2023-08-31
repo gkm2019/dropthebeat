@@ -14,7 +14,6 @@ export default function MainScreen() {
     <S.Container>
       <S.ButtonContainer>
         <CircleButton onClick={goToTeam}>팀</CircleButton>
-        <CircleButton>개인</CircleButton>
       </S.ButtonContainer>
     </S.Container>
   );
