@@ -69,3 +69,10 @@ export const Description = styled.span<{ disabled: boolean }>`
   ${Caption1};
   color: ${({ disabled }) => (disabled ? Colors.black03 : Colors.black05)};
 `;
+
+export const IndicatorContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

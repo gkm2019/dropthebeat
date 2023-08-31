@@ -60,31 +60,27 @@ export default function ApplicationCard({
       disabled={!!checkInstall || isInstallLoading || isLoadingCheckInstall}
       checkInstall={!!checkInstall}
     >
-      {isInstallLoading || isLoadingCheckInstall ? (
-        <LoadingIndicator />
-      ) : (
-        <S.TextContainer>
-          <S.Title
-            disabled={
-              !!checkInstall || isInstallLoading || isLoadingCheckInstall
-            }
-          >{`${name}${!!checkInstall ? " ✅" : ""}`}</S.Title>
-          <S.Version
-            disabled={
-              !!checkInstall || isInstallLoading || isLoadingCheckInstall
-            }
-          >
-            Version: {version}
-          </S.Version>
-          <S.Description
-            disabled={
-              !!checkInstall || isInstallLoading || isLoadingCheckInstall
-            }
-          >
-            {description}
-          </S.Description>
-        </S.TextContainer>
-      )}
+      <S.TextContainer>
+        <S.Title
+          disabled={!!checkInstall || isInstallLoading || isLoadingCheckInstall}
+        >{`${name}${!!checkInstall ? " ✅" : ""}`}</S.Title>
+        <S.Version
+          disabled={!!checkInstall || isInstallLoading || isLoadingCheckInstall}
+        >
+          Version: {version}
+        </S.Version>
+        <S.Description
+          disabled={!!checkInstall || isInstallLoading || isLoadingCheckInstall}
+        >
+          {description}
+        </S.Description>
+      </S.TextContainer>
+      {isInstallLoading ||
+        (isLoadingCheckInstall && (
+          <S.IndicatorContainer>
+            <LoadingIndicator />
+          </S.IndicatorContainer>
+        ))}
     </S.Container>
   );
 }
