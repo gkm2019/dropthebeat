@@ -79,6 +79,20 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   win = new BrowserWindow(browserOptions);
 
   win.on('close', saveState);
+  win.webContents.session.webRequest.onBeforeSendHeaders(
+    (details, callback) => {
+      callback({ requestHeaders: { Origin: '*', ...details.requestHeaders } });
+    },
+  );
+
+  win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        'Access-Control-Allow-Origin': ['*'],
+        ...details.responseHeaders,
+      },
+    });
+  });
 
   return win;
 };

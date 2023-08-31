@@ -1,5 +1,4 @@
 import { AppProps } from "next/app";
-import { PlatformBar } from "../components/blocks";
 import {
   QueryCache,
   QueryClient,
@@ -28,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Global styles={globalStyles} />
-      <PlatformBar />
+
       <Component {...pageProps} />
     </QueryClientProvider>
   );
