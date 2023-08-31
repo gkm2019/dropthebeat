@@ -52,8 +52,6 @@ export default function ApplicationCard({
       });
   };
 
-  console.log(isInstallLoading, isLoadingCheckInstall);
-
   return (
     <S.Container
       onClick={handleInstall}
