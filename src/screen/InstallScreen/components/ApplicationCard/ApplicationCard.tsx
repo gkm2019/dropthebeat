@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./ApplicationCard.styled";
 import { ApplicationType } from "../../../../types/application";
 import useModal from "@/hooks/useModal";
@@ -20,13 +20,16 @@ export default function ApplicationCard({
 }: ApplicationCardProps) {
   const { open } = useModal();
 
+  const [isInstallLoading, setIsInstallLoading] = useState(false);
+
   const {
     data: checkInstall,
     refetch: refetchCheckInstall,
-    isLoading,
+    isLoading: isLoadingCheckInstall,
   } = useGetApplicationCheckInstall(script);
 
   const handleInstall = async () => {
+    setIsInstallLoading(true);
     await getApplicationInstall(script, "arm64")
       .then((res) => {
         if (teamToolType === "auto") {
@@ -41,29 +44,43 @@ export default function ApplicationCard({
           window.open(res);
         }
         refetchCheckInstall();
+        setIsInstallLoading(false);
       })
       .catch(() => {
         open.toast("설치에 실패했습니다.", `application-error-${script}`);
+        setIsInstallLoading(false);
       });
   };
+
+  console.log(isInstallLoading, isLoadingCheckInstall);
 
   return (
     <S.Container
       onClick={handleInstall}
-      disabled={!!checkInstall || isLoading}
+      disabled={!!checkInstall || isInstallLoading || isLoadingCheckInstall}
       checkInstall={!!checkInstall}
     >
-      {isLoading ? (
+      {isInstallLoading || isLoadingCheckInstall ? (
         <LoadingIndicator />
       ) : (
         <S.TextContainer>
-          <S.Title disabled={!!checkInstall || isLoading}>{`${name}${
-            !!checkInstall ? " ✅" : ""
-          }`}</S.Title>
-          <S.Version disabled={!!checkInstall || isLoading}>
+          <S.Title
+            disabled={
+              !!checkInstall || isInstallLoading || isLoadingCheckInstall
+            }
+          >{`${name}${!!checkInstall ? " ✅" : ""}`}</S.Title>
+          <S.Version
+            disabled={
+              !!checkInstall || isInstallLoading || isLoadingCheckInstall
+            }
+          >
             Version: {version}
           </S.Version>
-          <S.Description disabled={!!checkInstall || isLoading}>
+          <S.Description
+            disabled={
+              !!checkInstall || isInstallLoading || isLoadingCheckInstall
+            }
+          >
             {description}
           </S.Description>
         </S.TextContainer>
