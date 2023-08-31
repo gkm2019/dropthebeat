@@ -1,4 +1,3 @@
-
 import { toast } from "react-toastify";
 import { StyledToastContainer } from "./Toast.styled";
 
