@@ -5,7 +5,7 @@ on:
       - main
 env:
   AWS_REGION: us-east-1
-  AWS_S3_BUCKET_NAME: hackton-project-dropbeat
+  AWS_S3_BUCKET_NAME: hackton.choilab.xyz
 
 jobs:
   build:
