@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { H1 } from "../../styles/typography";
+import { H1, H3_B } from "../../styles/typography";
 import Colors from "../../styles/colors";
 
 export const Container = styled.div`
@@ -11,4 +11,12 @@ export const Container = styled.div`
   gap: 16px;
 `;
 
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const Title = styled.span`
+  ${H3_B};
+  color: ${Colors.black01};
+`;
 
