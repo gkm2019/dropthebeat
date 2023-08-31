@@ -1,6 +1,6 @@
 variable "bucket_name" {
   description = "s3 bucket name"
-  default     = "hackton-project-dropbeat"
+  default     = "hackton.choilab.xyz"
   type        = string
 }
 
