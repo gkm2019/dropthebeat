@@ -6,7 +6,6 @@ import TeamTitleSection from "./components/TeamTitleSection";
 import { useRouter } from "next/router";
 import useGetTeamToolInfo from "@/api/team/useGetTeamToolInfo";
 import { TeamToolType } from "@/types/api/teamTool";
-import Dialog from "@/components/molecules/modals/dialog/Dialog";
 
 export default function InstallScreen() {
   const router = useRouter();
