@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import * as S from "./TeamTitleSection.styled";
 
-export default function TeamTitleSection() {
+interface TeamTitleSectionProps {
+  teamName: string;
+}
+
+export default function TeamTitleSection({ teamName }: TeamTitleSectionProps) {
   const [platform, setPlatform] = useState("");
 
   useEffect(() => {
@@ -14,7 +18,7 @@ export default function TeamTitleSection() {
 
   return (
     <S.Container>
-      <S.Title>드랍더비트</S.Title>
+      <S.Title>{teamName}</S.Title>
       <S.Platform>Your OS is {platform}</S.Platform>
     </S.Container>
   );

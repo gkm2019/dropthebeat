@@ -26,6 +26,10 @@ const Colors = {
   white03: "#F2F3F2",
   white04: "#ECECEB",
   white05: "#E5E6E4",
+  white06: "#DEDFDD",
+  white07: "#D7D8D6",
+  white08: "#D0D1CF",
+  white09: "#C9CAC8",
 };
 
 export default Colors;

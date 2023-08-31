@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { ConfluenceIcon, GithubIcon } from "../../../../components/atoms/icon";
 import * as S from "./LinkSection.styled";
 import Colors from "../../../../styles/colors";
+import { GithubURL } from "@/types/api/teamTool";
 
 const CONFLUENCE_COLOR = {
   primary: "#0052CC",
@@ -15,27 +16,73 @@ const GITHUB_COLOR = {
   active: Colors.black03,
 };
 
-export default function LinkSection() {
+interface LinkSectionProps {
+  confluenceLink?: string;
+  githubLink?: GithubURL[];
+}
+
+export default function LinkSection({
+  confluenceLink,
+  githubLink,
+}: LinkSectionProps) {
+  const [mouseOver, setMouseOver] = useState(false);
   const handleConfluenceClick = () => {
-    window.open("https://confluence.com");
+    window.open(confluenceLink);
   };
-  const handleGithubClick = () => {
-    window.open("https://github.com");
+  const handleGithubClick = (link: string) => {
+    window.open(link);
+  };
+  const handleGithubMouseEnter = () => {
+    setMouseOver(true);
+  };
+  const handleGithubMouseLeave = () => {
+    setMouseOver(false);
   };
 
   return (
     <S.Container>
-      <S.ButtonContainer
-        onClick={handleConfluenceClick}
-        colors={CONFLUENCE_COLOR}
-      >
-        <ConfluenceIcon />
-        <S.Text>Our Confluence</S.Text>
-      </S.ButtonContainer>
-      <S.ButtonContainer onClick={handleGithubClick} colors={GITHUB_COLOR}>
-        <GithubIcon />
-        <S.Text>Our Github organization</S.Text>
-      </S.ButtonContainer>
+      {confluenceLink && (
+        <S.ButtonContainer
+          onClick={handleConfluenceClick}
+          colors={CONFLUENCE_COLOR}
+          full={!githubLink?.length}
+        >
+          <ConfluenceIcon />
+          <S.Text>Confluence</S.Text>
+        </S.ButtonContainer>
+      )}
+      {!!githubLink?.length && (
+        <S.ButtonContainer
+          onMouseEnter={handleGithubMouseEnter}
+          onMouseLeave={handleGithubMouseLeave}
+          colors={GITHUB_COLOR}
+          full={!confluenceLink}
+        >
+          <GithubIcon />
+          <S.Text>Github</S.Text>
+        </S.ButtonContainer>
+      )}
+      {mouseOver && (
+        <S.DropdownContainer
+          onMouseEnter={handleGithubMouseEnter}
+          onMouseLeave={handleGithubMouseLeave}
+          confluenceLink={!!confluenceLink}
+        >
+          {githubLink?.map(({ name, url }) => {
+            return (
+              <div
+                key={name}
+                className="dropdownItem"
+                onClick={() => {
+                  handleGithubClick(url);
+                }}
+              >
+                {name}
+              </div>
+            );
+          })}
+        </S.DropdownContainer>
+      )}
     </S.Container>
   );
 }

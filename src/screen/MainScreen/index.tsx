@@ -7,7 +7,7 @@ export default function MainScreen() {
   const router = useRouter();
 
   const goToTeam = () => {
-    router.push("/installation/team/1");
+    router.push("/team/list");
   };
 
   return (

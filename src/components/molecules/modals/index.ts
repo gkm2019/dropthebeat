@@ -1,1 +1,1 @@
-export { default as UnifiedModal } from "./UnifiedModal";
+export { default as UnifiedModal } from "./unified-modal";

@@ -1,25 +1,42 @@
 import styled from "@emotion/styled";
 import Colors from "../../../../styles/colors";
-import { Body1, Body1_B, Body2, Caption1, Caption2 } from "../../../../styles/typography";
+import {
+  Body1,
+  Body1_B,
+  Body2,
+  Caption1,
+  Caption2,
+} from "../../../../styles/typography";
 
 export const Container = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 16px 24px;
-  background-color: ${Colors.white03};
+  background-color: ${Colors.white02};
   border: none;
   border-radius: 12px;
   gap: 24px;
   width: 32%;
 
+  height: 120px;
+
+  box-shadow: 0 8px 12px rgb(0 0 0 / 10%);
+
   cursor: pointer;
+
+  transition: all 0.2s ease;
 
   &:hover {
     background-color: ${Colors.white04};
   }
   &:active {
     background-color: ${Colors.white05};
+  }
+  &:disabled {
+    background-color: ${Colors.black01}98;
+    cursor: default;
+    box-shadow: none;
   }
 
   @media (max-width: 767px) {
@@ -35,19 +52,19 @@ export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-`
+`;
 
-export const Title = styled.span`
+export const Title = styled.span<{ disabled: boolean }>`
   ${Body1_B};
-  color: ${Colors.black01};
+  color: ${({ disabled }) => (disabled ? Colors.black03 : Colors.black01)};
 `;
 
-export const Version = styled.span`
+export const Version = styled.span<{ disabled: boolean }>`
   ${Caption2};
-  color: ${Colors.black05};
+  color: ${({ disabled }) => (disabled ? Colors.black03 : Colors.black05)};
 `;
 
-export const Description = styled.span`
+export const Description = styled.span<{ disabled: boolean }>`
   ${Caption1};
-  color: ${Colors.black05};
+  color: ${({ disabled }) => (disabled ? Colors.black03 : Colors.black05)};
 `;

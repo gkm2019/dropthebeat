@@ -23,12 +23,12 @@ export const Container = styled.button`
     background-color: ${Colors.americanPurple};
     top: -16px;
 
-    box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
+    box-shadow: 0 12px 12px rgb(0 0 0 / 10%);
   }
   &:active {
     background-color: ${Colors.americanPurpleShade};
 
-    box-shadow: 0 20px 20px rgb(0 0 0 / 10%);
+    box-shadow: 0 24px 24px rgb(0 0 0 / 10%);
   }
 `;
 
