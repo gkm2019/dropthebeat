@@ -73,12 +73,11 @@ export default function ApplicationCard({
           {description}
         </S.Description>
       </S.TextContainer>
-      {isInstallLoading ||
-        (isLoadingCheckInstall && (
-          <S.IndicatorContainer>
-            <LoadingIndicator />
-          </S.IndicatorContainer>
-        ))}
+      {(isInstallLoading || isLoadingCheckInstall) && (
+        <S.IndicatorContainer>
+          <LoadingIndicator />
+        </S.IndicatorContainer>
+      )}
     </S.Container>
   );
 }
