@@ -1,0 +1,57 @@
+name: dropthebeat App CI/CD
+on:
+  push:
+    branches:
+      - main
+env:
+  AWS_REGION: ap-northeast-2
+  AWS_S3_BUCKET_NAME: hackton.choilab.xyz
+
+jobs:
+  build:
+    name: Deploy to Develop
+    runs-on: ubuntu-latest
+    environment: develop
+    permissions:
+      packages: write
+      contents: read
+      id-token: write
+      actions: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build install app
+        run: yarn run build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dropthebeat
+          path: app
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dropthebeat
+          path: app
+
+      # AWS credentials 설정
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy
+        run: |
+          aws s3 cp --recursive app s3://${{ env.AWS_S3_BUCKET_NAME }}

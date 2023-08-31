@@ -5,25 +5,25 @@ const globalStyles = css`
     font-family: "Pretendard";
     font-weight: 400;
     font-style: normal;
-    src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+    src: url("/assets/fonts/Pretendard-Regular.woff2") format("woff2");
   }
   @font-face {
     font-family: "Pretendard";
     font-weight: 500;
     font-style: normal;
-    src: url("/fonts/Pretendard-Medium.woff2") format("woff2");
+    src: url("/assets/fonts/Pretendard-Medium.woff2") format("woff2");
   }
   @font-face {
     font-family: "Pretendard";
     font-weight: 700;
     font-style: normal;
-    src: url("/fonts/Pretendard-Bold.woff2") format("woff2");
+    src: url("/assets/fonts/Pretendard-Bold.woff2") format("woff2");
   }
   @font-face {
     font-family: "Pretendard";
     font-weight: 900;
     font-style: normal;
-    src: url("/fonts/Pretendard-Black.woff2") format("woff2");
+    src: url("/assets/fonts/Pretendard-Black.woff2") format("woff2");
   }
   
   * {
@@ -34,7 +34,6 @@ const globalStyles = css`
   }
   html {
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   body {
