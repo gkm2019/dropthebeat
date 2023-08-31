@@ -7,7 +7,7 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
   padding: 16px 24px;
-  background-color: ${Colors.white02};
+  background-color: ${Colors.white03};
   border: none;
   border-radius: 12px;
   gap: 24px;

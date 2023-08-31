@@ -8,6 +8,9 @@ import { Global } from "@emotion/react";
 import globalStyles from "../styles/globalStyles";
 import React from "react";
 
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "@/components/molecules/modals/Toast";
+
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -28,8 +31,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Global styles={globalStyles} />
+      <main>
+        <Component {...pageProps} />
 
-      <Component {...pageProps} />
+        <Toast />
+      </main>
     </QueryClientProvider>
   );
 }

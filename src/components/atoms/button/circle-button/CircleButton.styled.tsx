@@ -12,14 +12,23 @@ export const Container = styled.button`
   border-radius: 50%;
 
   background-color: ${Colors.americanPurpleTint};
+  transition: all 0.2s ease;
+
+  position: relative;
+  top: 0;
 
   cursor: pointer;
 
   &:hover {
     background-color: ${Colors.americanPurple};
+    top: -16px;
+
+    box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
   }
   &:active {
     background-color: ${Colors.americanPurpleShade};
+
+    box-shadow: 0 20px 20px rgb(0 0 0 / 10%);
   }
 `;
 

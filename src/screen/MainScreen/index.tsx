@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useRouter } from "next/router";
 import { CircleButton } from "../../components/atoms/button";
 import * as S from "./MainScreen.styled";

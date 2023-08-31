@@ -1,6 +1,6 @@
 import React from "react";
-import TeamInstallScreen from "../../../screen/TeamInstallScreen";
+import InstallScreen from "../../../screen/InstallScreen";
 
 export default function TeamInstallPage() {
-  return <TeamInstallScreen />;
+  return <InstallScreen />;
 }

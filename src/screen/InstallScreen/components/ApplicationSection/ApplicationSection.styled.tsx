@@ -7,7 +7,17 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: ${Colors.white01};
   gap: 16px;
+`;
+
+export const CardContainer = styled.div`
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 300px;
   overflow: auto;
+  background-color: ${Colors.white02};
+  border-radius: 24px;
 `;
 
 export const Title = styled.span`
@@ -15,11 +25,10 @@ export const Title = styled.span`
   color: ${Colors.black01};
 `;
 
-export const CardContainer = styled.div`
+export const CardWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  background-color: ${Colors.white01};
   border: none;
-  gap: 20px 2%;
+  gap: 16px 2%;
 `;
