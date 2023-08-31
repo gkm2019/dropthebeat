@@ -6,6 +6,10 @@ export const BannerContainer = styled.div`
   width: 49%;
   height: 67px;
   position: relative;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const BannerContent = styled.div<{ translateY: number }>`
