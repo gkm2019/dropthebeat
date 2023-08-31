@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 
 const homeDevClient = axios.create({
   baseURL: "http://localhost:8080",
-  timeout: 60000,
+  timeout: 1000 * 60,
 });
 
 const homeDevApi = {

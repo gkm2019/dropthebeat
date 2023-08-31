@@ -61,7 +61,7 @@ export const DropdownContainer = styled.div<{ confluenceLink: boolean }>`
     width: calc(100% - 64px);
   }
   background-color: ${Colors.white02};
-  top: 130px;
+  top: 160px;
   right: 32px;
 
   border-radius: 12px;
@@ -69,7 +69,7 @@ export const DropdownContainer = styled.div<{ confluenceLink: boolean }>`
 
   @media (max-width: 767px) {
     width: calc(100% - 64px);
-    top: 196px;
+    top: 220px;
   }
 
   .dropdownItem {

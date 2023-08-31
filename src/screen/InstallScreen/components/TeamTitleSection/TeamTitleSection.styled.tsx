@@ -4,9 +4,23 @@ import { B1_B, H3_B } from "../../../../styles/typography";
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: end;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  gap: 16px 2%;
 `;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 49%;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`
 
 export const Title = styled.span`
   ${B1_B};

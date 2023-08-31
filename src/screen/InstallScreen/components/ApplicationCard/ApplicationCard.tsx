@@ -16,6 +16,7 @@ export default function ApplicationCard({
   version,
   description,
   teamToolType,
+  script
 }: ApplicationCardProps) {
   const { open } = useModal();
 
@@ -23,31 +24,32 @@ export default function ApplicationCard({
     data: checkInstall,
     refetch: refetchCheckInstall,
     isLoading,
-  } = useGetApplicationCheckInstall(name);
+  } = useGetApplicationCheckInstall(script);
 
   const handleInstall = async () => {
-    await getApplicationInstall(name)
+    await getApplicationInstall(script, "arm64")
       .then((res) => {
-        if (res.status === 200) {
-          if (teamToolType === "auto") {
-            open.toast("설치가 완료되었습니다.", `application-success-${name}`);
-            refetchCheckInstall();
-          } else if (teamToolType === "manual") {
-            open.toast("설치가 완료되었습니다.", `application-success-${name}`);
-          } else if (teamToolType === "link") {
-            window.open(res.data);
-          }
-        } else {
-          open.toast("설치에 실패했습니다.", `application-error-${name}`);
+        if (teamToolType === "auto") {
+          open.toast("설치가 완료되었습니다.", `application-success-${script}`);
+        } else if (teamToolType === "manual") {
+          navigator.clipboard.writeText(res);
+          open.toast("명령어가 복사되었습니다.", `application-success-${script}`);
+        } else if (teamToolType === "link") {
+          window.open(res.data);
         }
+        refetchCheckInstall();
       })
       .catch(() => {
-        open.toast("설치에 실패했습니다.", `application-error-${name}`);
+        open.toast("설치에 실패했습니다.", `application-error-${script}`);
       });
   };
 
   return (
-    <S.Container onClick={handleInstall} disabled={!!checkInstall || isLoading} checkInstall={!!checkInstall}>
+    <S.Container
+      onClick={handleInstall}
+      disabled={!!checkInstall || isLoading}
+      checkInstall={!!checkInstall}
+    >
       {isLoading ? (
         <LoadingIndicator />
       ) : (
@@ -55,8 +57,12 @@ export default function ApplicationCard({
           <S.Title disabled={!!checkInstall || isLoading}>{`${name}${
             !!checkInstall ? " ✅" : ""
           }`}</S.Title>
-          <S.Version disabled={!!checkInstall || isLoading}>Version: {version}</S.Version>
-          <S.Description disabled={!!checkInstall || isLoading}>{description}</S.Description>
+          <S.Version disabled={!!checkInstall || isLoading}>
+            Version: {version}
+          </S.Version>
+          <S.Description disabled={!!checkInstall || isLoading}>
+            {description}
+          </S.Description>
         </S.TextContainer>
       )}
     </S.Container>

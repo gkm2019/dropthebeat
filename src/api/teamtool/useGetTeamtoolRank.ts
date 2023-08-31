@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTeamtoolRank } from ".";
+import { getTeamtoolList } from ".";
 
 const useGetTeamtoolList = () => {
     return useQuery(["teamtool-list"], () => {
-        return getTeamtoolRank();
+        return getTeamtoolList();
     });
 };
 

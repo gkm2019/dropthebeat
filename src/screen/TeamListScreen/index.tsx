@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import * as S from "./TeamListScreen.styled";
-import { MOCK_TEAM_LIST } from "@/constants/mocks";
 import useGetTeamList from "@/api/team/useGetTeamList";
 
 export function TeamListScreen() {
