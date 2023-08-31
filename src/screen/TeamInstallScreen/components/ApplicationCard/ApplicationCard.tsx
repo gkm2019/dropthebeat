@@ -1,3 +1,4 @@
+import React from 'react';
 import { GithubIcon } from "../../../../components/atoms/icon";
 import * as S from "./ApplicationCard.styled";
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./TeamInstallScreen.styled";
 import ApplicationSection from "./components/ApplicationSection";
 import GithubSection from "./components/GithubSection";

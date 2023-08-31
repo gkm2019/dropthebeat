@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-query";
 import { Global } from "@emotion/react";
 import globalStyles from "../styles/globalStyles";
+import React from "react";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
