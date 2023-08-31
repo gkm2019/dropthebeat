@@ -18,29 +18,31 @@ resource "aws_s3_bucket_public_access_block" "static_site_bucket_public_access" 
   restrict_public_buckets = false
 }
 
-# resource "aws_s3_bucket_policy" "static_site_bucket_policy" {
-#   bucket = var.bucket_name
+resource "aws_s3_bucket_policy" "static_site_bucket_policy" {
+  bucket = var.bucket_name
 
-#   policy = jsonencode({
-#     Version = "2012-10-17"
-#     Statement = [
-#       {
-#         Sid       = "PublicReadGetObject"
-#         Principal = "*"
-#         Action = [
-#           "s3:GetObject",
-#         ]
-#         Effect = "Allow"
-#         Resource = [
-#           "arn:aws:s3:::${var.bucket_name}",
-#           "arn:aws:s3:::${var.bucket_name}/*"
-#         ]
-#       },
-#     ]
-#   })
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject"
+        Principal = "*"
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket",
+          "s3:GetBucketLocation"
+        ]
+        Effect = "Allow"
+        Resource = [
+          "arn:aws:s3:::${var.bucket_name}",
+          "arn:aws:s3:::${var.bucket_name}/*"
+        ]
+      },
+    ]
+  })
 
-#   depends_on = [aws_s3_bucket_public_access_block.static_site_bucket_public_access]
-# }
+  depends_on = [aws_s3_bucket_public_access_block.static_site_bucket_public_access]
+}
 
 resource "aws_s3_bucket_website_configuration" "static_site_bucket_website_config" {
   bucket = var.bucket_name
