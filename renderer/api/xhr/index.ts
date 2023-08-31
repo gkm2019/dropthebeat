@@ -27,3 +27,5 @@ const homeDevApi = {
       ...config,
     }),
 };
+
+export default homeDevApi;
