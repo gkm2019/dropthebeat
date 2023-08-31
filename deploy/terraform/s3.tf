@@ -30,7 +30,8 @@ resource "aws_s3_bucket_policy" "static_site_bucket_policy" {
         Action = [
           "s3:GetObject",
           "s3:ListBucket",
-          "s3:GetBucketLocation"
+          "s3:GetBucketLocation",
+          "s3:PutObject"
         ]
         Effect = "Allow"
         Resource = [
