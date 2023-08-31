@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import homeDevApi from "../xhr";
+import { ApplicationInstallRequest } from "@/types/api/install";
 
 export const getApplicationInstall = async (name: string) => {
   const { data }: AxiosResponse = await homeDevApi.get(

@@ -1,7 +1,6 @@
 import React from "react";
 import * as S from "./ApplicationSection.styled";
 import ApplicationCard from "../ApplicationCard/ApplicationCard";
-import { MOCK_APP_LIST } from "@/constants/mocks";
 import { ApplicationType } from "@/types/application";
 import { TeamToolType } from "@/types/api/teamTool";
 
@@ -16,23 +15,25 @@ export default function ApplicationSection({
 }: ApplicationSectionProps) {
   const title = () => {
     switch (teamToolType) {
-      case 'auto':
+      case "auto":
         return "자동 설치 가능";
-      case 'manual':
+      case "manual":
         return "수동 설치";
-      case 'link':
+      case "link":
         return "링크";
       default:
         return "";
     }
-  }
+  };
   return (
     <S.Container>
       <S.Title>{title()}</S.Title>
       <S.CardContainer>
         <S.CardWrap>
           {teamToolList?.map((item, i) => {
-            return <ApplicationCard key={i} {...item} />;
+            return (
+              <ApplicationCard key={i} {...item} teamToolType={teamToolType} />
+            );
           })}
         </S.CardWrap>
       </S.CardContainer>
