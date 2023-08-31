@@ -16,7 +16,7 @@ export default function ApplicationCard({
   version,
   description,
   teamToolType,
-  script
+  script,
 }: ApplicationCardProps) {
   const { open } = useModal();
 
@@ -33,9 +33,12 @@ export default function ApplicationCard({
           open.toast("설치가 완료되었습니다.", `application-success-${script}`);
         } else if (teamToolType === "manual") {
           navigator.clipboard.writeText(res);
-          open.toast("명령어가 복사되었습니다.", `application-success-${script}`);
+          open.toast(
+            "명령어가 복사되었습니다.",
+            `application-success-${script}`
+          );
         } else if (teamToolType === "link") {
-          window.open(res.data);
+          window.open(res);
         }
         refetchCheckInstall();
       })
