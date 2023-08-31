@@ -1,0 +1,44 @@
+name: React App CI/CD
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - push
+env:
+  AWS_REGION: us-east-1
+  AWS_S3_BUCKET_NAME: hackton-project-dropthebeat
+
+jobs:
+  build:
+    name: Deploy to Develop
+    runs-on: ubuntu-latest
+    environment: develop
+    permissions:
+      packages: write
+      contents: read
+      id-token: write
+      actions: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build install app
+        run: yarn run build
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dropthebeat
+          path: build
+
+      - name: Deploy to S3
+        run: aws s3 sync build/ s3://${{ env.AWS_S3_BUCKET_NAME }}/
