@@ -9,7 +9,7 @@ import globalStyles from "../styles/globalStyles";
 import React from "react";
 
 import "react-toastify/dist/ReactToastify.css";
-import Toast from "@/components/molecules/modals/toast";
+import Toast from "@/components/molecules/toast";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
